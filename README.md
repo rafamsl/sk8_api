@@ -59,11 +59,13 @@ if it does not exist, {trick_name} will be saved in your collection with 0/0 sta
 
 if the trick exists, it will add {corrects} and {total} to the current stats and return the final stats for that trick
 
-3.4 Delete trick
+if the trick doesn exist, it will be created with the added stats
 
-```http://127.0.0.1:8000/delete_trick/Ollie```
+3.4 Clean trick
 
-if the trick exists, it is deleted from collection
+```http://127.0.0.1:8000/clean_trick/Ollie```
+
+if the trick exists, its stats are reseted to 0/0
 
 
 
