@@ -1,7 +1,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is my second commited project. It is a basic API to track your progress while skating
+This is my second commited project. It is a basic API to track your progress while skating. It is composed by: a simple database, a Class object and 4 API calls
 
 You will be able to:
 
