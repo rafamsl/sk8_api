@@ -16,7 +16,7 @@ def trick_stats(trick_name):
     db.close()
     return object
 
-@app.get("/new_trick/{trick_name}")
+@app.post("/new_trick/{trick_name}")
 def create_trick(trick_name):
     db = shelve.open('tricksdb')
     if trick_name not in db.keys():
@@ -29,7 +29,7 @@ def create_trick(trick_name):
     return object
 
 
-@app.get("/clean_trick/{trick_name}")
+@app.put("/clean_trick/{trick_name}")
 def create_trick(trick_name):
     db = shelve.open('tricksdb')
     if trick_name in db.keys():
@@ -40,14 +40,15 @@ def create_trick(trick_name):
     return object
 
 
-@app.get("/add_session/{trick_name}")
+@app.post("/add_session/{trick_name}")
 def add_session(trick_name,corrects,total):
 
     object = "Trick not found"
     
     db = shelve.open('tricksdb')
     if trick_name in db.keys():
-        object = db[trick_name].add(corrects,total)
+        db[trick_name] = db[trick_name].add(corrects,total)
+        object = db[trick_name].stats()
     else:
         trick = Trick(trick_name,corrects,total)
         db[trick_name] = trick
